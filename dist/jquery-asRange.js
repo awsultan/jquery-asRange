@@ -144,6 +144,7 @@
             this.set(value);
 
             event.preventDefault();
+            event.stopPropagation();
             return false;
           };
           this.mouseup = function() {
@@ -201,7 +202,6 @@
           this.value = value;
 
           this.updatePosition();
-          this.$element.focus();
 
           this.$element.trigger(this.parent.namespace + '::move', this);
         }
@@ -854,9 +854,9 @@
           key: 'getLength',
           value: function getLength() {
             if (this.options.direction === 'v') {
-              return this.$wrap.height();
+              return this.$wrap[0].getBoundingClientRect().height;
             }
-            return this.$wrap.width();
+            return this.$wrap[0].getBoundingClientRect().width;
           }
         },
         {

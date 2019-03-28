@@ -40,6 +40,7 @@ class Pointer {
       this.set(value);
 
       event.preventDefault();
+	  event.stopPropagation();
       return false;
     };
     this.mouseup = function () {
@@ -82,7 +83,6 @@ class Pointer {
     this.value = value;
 
     this.updatePosition();
-    this.$element.focus();
 
     this.$element.trigger(`${this.parent.namespace}::move`, this);
   }

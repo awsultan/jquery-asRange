@@ -233,9 +233,9 @@ class asRange {
 
   getLength() {
     if (this.options.direction === 'v') {
-      return this.$wrap.height();
+      return this.$wrap[0].getBoundingClientRect().height;
     }
-    return this.$wrap.width();
+    return this.$wrap[0].getBoundingClientRect().width;
   }
 
   update(options) {
